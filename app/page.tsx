@@ -1,35 +1,23 @@
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
+import HeroSection from "@/components/home/HeroSection";
+import CaseStudyGrid from "@/components/home/CaseStudyGrid";
 
 export default function Home() {
   return (
     <>
       <Nav />
       <main>
-        <section
-          id="top-of-page"
-          className="flex min-h-screen items-center justify-center"
-        >
-          <p className="text-muted text-sm tracking-widest uppercase">
-            Hero
-          </p>
-        </section>
+        <HeroSection />
 
-        <section
-          id="project-highlights"
-          className="flex min-h-screen items-center justify-center"
-        >
-          <p className="text-muted text-sm tracking-widest uppercase">
-            Case Studies
-          </p>
-        </section>
+        <CaseStudyGrid />
 
         <section
           id="product-development"
           className="flex min-h-screen items-center justify-center"
         >
           <p className="text-muted text-sm tracking-widest uppercase">
-            Process
+            Process — Coming in Phase 3
           </p>
         </section>
 
@@ -38,7 +26,7 @@ export default function Home() {
           className="flex min-h-screen items-center justify-center"
         >
           <p className="text-muted text-sm tracking-widest uppercase">
-            About
+            About — Coming in Phase 3
           </p>
         </section>
       </main>
