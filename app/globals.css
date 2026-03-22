@@ -12,3 +12,8 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Hide scrollbar on horizontal scroll strips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
