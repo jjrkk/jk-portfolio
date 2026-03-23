@@ -47,12 +47,13 @@ export default function ProcessSection() {
                 </p>
               </div>
 
-              {/* Process cards — 2 col on md+, 1 col mobile */}
+              {/* Process cards — full-bleed image style, 2 col on md+, 1 col mobile */}
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {category.cards.map((card, cardIdx) => (
                   <motion.div
                     key={card.title}
-                    className="overflow-hidden rounded-2xl border border-white/8 bg-card transition-colors duration-200 hover:border-white/16"
+                    className="relative overflow-hidden rounded-2xl"
+                    style={{ aspectRatio: "4/3" }}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
@@ -60,26 +61,28 @@ export default function ProcessSection() {
                       duration: 0.4,
                       delay: catIdx * 0.05 + cardIdx * 0.05,
                     }}
+                    whileHover={{ scale: 1.02 }}
                   >
-                    {/* Text block */}
-                    <div className="p-5">
-                      <h4 className="text-sm font-semibold text-white">
+                    {/* Full-bleed image */}
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 600px"
+                    />
+
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                    {/* Bottom: title + description */}
+                    <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-1.5 p-5">
+                      <h4 className="text-sm font-semibold leading-snug text-white md:text-base">
                         {card.title}
                       </h4>
-                      <p className="mt-1 text-xs leading-relaxed text-muted">
+                      <p className="text-xs leading-relaxed text-white/60">
                         {card.description}
                       </p>
-                    </div>
-
-                    {/* Image block */}
-                    <div className="relative h-48 w-full">
-                      <Image
-                        src={card.image}
-                        alt={card.title}
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 768px) 100vw, 600px"
-                      />
                     </div>
                   </motion.div>
                 ))}
