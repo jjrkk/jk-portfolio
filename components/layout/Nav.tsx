@@ -27,26 +27,28 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 md:px-8">
-        {/* Logo */}
-        <Link
-          href="#top-of-page"
-          className="text-xl font-bold tracking-tight"
-        >
-          <span className="text-white">jk</span>
-          <span className="text-accent">/</span>
-        </Link>
+        {/* Left group: logo + nav pill */}
+        <div className="flex items-center gap-4">
+          <Link
+            href="#top-of-page"
+            className="text-xl font-bold tracking-tight"
+          >
+            <span className="text-white">jk</span>
+            <span className="text-accent">/</span>
+          </Link>
 
-        {/* Centre pill nav — hidden on mobile */}
-        <div className="hidden md:flex items-center gap-1 rounded-full bg-nav-pill px-2 py-1.5">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="px-4 py-1.5 text-sm font-medium text-white/80 rounded-full transition-colors duration-150 hover:text-accent"
-            >
-              {label}
-            </a>
-          ))}
+          {/* Pill nav — hidden on mobile */}
+          <div className="hidden md:flex items-center gap-1 rounded-full bg-nav-pill px-2 py-1.5">
+            {NAV_LINKS.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="px-4 py-1.5 text-sm font-medium text-white/80 rounded-full transition-colors duration-150 hover:text-accent"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Right actions */}
