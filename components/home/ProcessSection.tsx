@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { processCategories } from "@/data/processSteps";
 
@@ -51,7 +52,7 @@ export default function ProcessSection() {
                 {category.cards.map((card, cardIdx) => (
                   <motion.div
                     key={card.title}
-                    className="flex flex-col gap-2 rounded-xl border border-white/8 bg-card p-5 transition-colors duration-200 hover:border-white/16 hover:bg-white/6"
+                    className="overflow-hidden rounded-2xl border border-white/8 bg-card transition-colors duration-200 hover:border-white/16"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
@@ -60,12 +61,26 @@ export default function ProcessSection() {
                       delay: catIdx * 0.05 + cardIdx * 0.05,
                     }}
                   >
-                    <h4 className="text-sm font-semibold text-white">
-                      {card.title}
-                    </h4>
-                    <p className="text-xs leading-relaxed text-muted">
-                      {card.description}
-                    </p>
+                    {/* Text block */}
+                    <div className="p-5">
+                      <h4 className="text-sm font-semibold text-white">
+                        {card.title}
+                      </h4>
+                      <p className="mt-1 text-xs leading-relaxed text-muted">
+                        {card.description}
+                      </p>
+                    </div>
+
+                    {/* Image block */}
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                      />
+                    </div>
                   </motion.div>
                 ))}
               </div>
